@@ -11,5 +11,8 @@
     "js"
   ],
   "author": "Oleh Filiak <oleh.filyak92@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
 }
