@@ -18,6 +18,7 @@ app.set('view engine', 'hbs'); // безпосередньо використо�
 app.set('views', 'views');
 
 app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true }));
 app.use('/', homeRoutes); // реєструємо роути
 app.use('/add', addRoutes);
 app.use('/courses', coursesRoutes);

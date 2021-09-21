@@ -1,1 +1,24 @@
 <h1>Add</h1>
+
+<form action="/add" method="POST">
+        <div class="input-field">
+          <input  id="title" name="title" type="text" class="validate" required>
+          <label for="title">Назва курсу</label>
+          <span class="helper-text" data-error="Введіть назву курсу"></span>
+        </div>
+
+                <div class="input-field">
+                  <input id="price" type="number" name="price" class="validate" required>
+                  <label for="price">Ціна курсу</label>
+                  <span class="helper-text" data-error="Введіть ціну"></span>
+                </div>
+
+                                    
+        <div class="input-field">
+            <input id="img" type="text" name="img" class="validate" required>
+            <label for="img">url img</label>
+            <span class="helper-text" data-error="Введіть посилання на картинку"></span>
+        </div>
+
+         <button class="btn btn-primary" type="submit">Submit</button>
+</form>
