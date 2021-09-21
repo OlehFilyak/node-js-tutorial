@@ -1,7 +1,11 @@
 const express = require('express');
 // const path = require('path');
+// const { allowedNodeEnvironmentFlags } = require('process');
 const exphbs = require('express-handlebars');
-const { allowedNodeEnvironmentFlags } = require('process');
+const homeRoutes = require('./routes/home'); // імпортуємо роути
+const addRoutes = require('./routes/add');
+const coursesRoutes = require('./routes/courses');
+
 const app = express();
 
 const hbs = exphbs.create({
@@ -14,31 +18,34 @@ app.set('view engine', 'hbs'); // безпосередньо використо�
 app.set('views', 'views');
 
 app.use(express.static('public'));
+app.use('/', homeRoutes); // реєструємо роути
+app.use('/add', addRoutes);
+app.use('/courses', coursesRoutes);
 
-app.get('/', (req, res) => {
-  // res.status(200);
-  // res.sendFile(path.join(__dirname, 'views', 'index.html'));
-  res.render('index', {
-    title: 'Головна сторінка',
-    isHome: true,
-  });
-});
+// app.get('/', (req, res) => {
+//   // res.status(200);
+//   // res.sendFile(path.join(__dirname, 'views', 'index.html'));
+//   res.render('index', {
+//     title: 'Головна сторінка',
+//     isHome: true,
+//   });
+// });
 
-app.get('/add', (req, res) => {
-  // res.sendFile(path.join(__dirname, 'views', 'about.html'));
-  res.render('add', {
-    title: 'Додати курс',
-    isAdd: true,
-  });
-});
+// app.get('/add', (req, res) => {
+//   // res.sendFile(path.join(__dirname, 'views', 'about.html'));
+//   res.render('add', {
+//     title: 'Додати курс',
+//     isAdd: true,
+//   });
+// });
 
-app.get('/courses', (req, res) => {
-  // res.sendFile(path.join(__dirname, 'views', 'about.html'));
-  res.render('courses', {
-    title: 'Курси',
-    isCourses: true,
-  });
-});
+// app.get('/courses', (req, res) => {
+//   // res.sendFile(path.join(__dirname, 'views', 'about.html'));
+//   res.render('courses', {
+//     title: 'Курси',
+//     isCourses: true,
+//   });
+// });
 
 const PORT = process.env.Port || 3000;
 
