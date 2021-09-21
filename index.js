@@ -13,15 +13,31 @@ app.engine('hbs', hbs.engine); // реєструємо в express, що взаг
 app.set('view engine', 'hbs'); // безпосередньо використовуємо
 app.set('views', 'views');
 
+app.use(express.static('public'));
+
 app.get('/', (req, res) => {
   // res.status(200);
   // res.sendFile(path.join(__dirname, 'views', 'index.html'));
-  res.render('index');
+  res.render('index', {
+    title: 'Головна сторінка',
+    isHome: true,
+  });
 });
 
-app.get('/about', (req, res) => {
+app.get('/add', (req, res) => {
   // res.sendFile(path.join(__dirname, 'views', 'about.html'));
-  res.render('about');
+  res.render('add', {
+    title: 'Додати курс',
+    isAdd: true,
+  });
+});
+
+app.get('/courses', (req, res) => {
+  // res.sendFile(path.join(__dirname, 'views', 'about.html'));
+  res.render('courses', {
+    title: 'Курси',
+    isCourses: true,
+  });
 });
 
 const PORT = process.env.Port || 3000;
